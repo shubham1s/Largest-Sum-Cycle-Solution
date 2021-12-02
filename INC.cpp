@@ -1,36 +1,39 @@
-#include<iostream>
+#include<bits/stdc++.h>
 #include<string>
-#include<vector>
-using namespace std;
+#include <iostream>
 
-vector<int> stringSearch(string big,string small){
-  //  vector<int> iterator it;
-    vector<int> result;
-    int index = big.find(small);
-    if(index!=big.end())
+using namespace std;
+void space(string& str, vector<int> length)
+{
+    int count = 0;
+    for (int i = 0; i < sizeof(length); i++) {
+        int c = str[i];
+        if (isspace(c))
+            count++;
+    }
+    cout<< count<<endl;
+}
+vector<int> PrintIndex(string text, string cell, string searchstring)
+{   vector<int> result;
+    int index = text.find(searchstring);
+    if(index!=-1)
     {
-        result.push_back(index-big.begin());
+        result.push_back(index);
     }
     else cout<<"Invalid Input";
-   // while(index!=-1){
-//    	result.push_back(index);
-  //  	index = big.find(small,index+1);
-//    }
-    
+    space(text,result);
     return result;
 }
-
-int main(){
-
-	string paragraph = "We are learning about STL strings. STL string class is quite powerful";
-
-string word;
-getline(cin,word);
-
-	vector<int> result = stringSearch(paragraph,word);
-	for(int x:result){
+int main()
+{
+string text,cell,searchstring;
+getline(cin, text);
+getline(cin, cell);
+getline(cin, searchstring);
+vector<int> result=PrintIndex(text,cell, searchstring);
+for(int x:result){
 		cout <<x<<",";
 	}
+return 0;
 
-	return 0;
 }
